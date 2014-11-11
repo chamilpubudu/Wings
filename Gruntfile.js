@@ -5,7 +5,6 @@ module.exports = function (grunt) {
     // Time how long tasks take. Can help when optimizing build times
     require('time-grunt')(grunt);
 
-    
     // Define the configuration for all the tasks
     grunt.initConfig({
 
@@ -25,8 +24,7 @@ module.exports = function (grunt) {
             devserver: {
                 options: {
                     base: 'src/',
-                    port: 8888,
-                    livereload: true
+                    port: 8888
                 }
             }
         },
@@ -38,25 +36,36 @@ module.exports = function (grunt) {
         },
 
         watch: {
-            files: ['src/index.html'],
+            files: ['src/{,*/}*.html',
+                    'src/{,*/}*.{png,jpg,jpeg,gif,webp,svg}'],
             options: {
                 livereload: true,
                 nospawn: true
             }
+        },
+
+        wiredep: {
+            task: {
+                // Point to the files that should be updated when
+                // you run `grunt wiredep`
+                src: [
+                  'src/{,*/}*.html'
+                ]
+            }
         }
-        
     });
 
     grunt.loadNpmTasks('grunt-contrib-connect');
     grunt.loadNpmTasks('grunt-open');
     grunt.loadNpmTasks('grunt-contrib-watch');
+    grunt.loadNpmTasks('grunt-wiredep');
 
     //TODO
     //defaults
     grunt.registerTask('default', ['dev']);
 
     //development
-    grunt.registerTask('dev', ['connect:devserver', 'open:devserver', 'watch']);
+    grunt.registerTask('dev', ['wiredep','connect:devserver', 'open:devserver', 'watch']);
 
     //server daemon
     grunt.registerTask('serve', ['connect:webserver']);
