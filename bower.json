@@ -1,0 +1,21 @@
+{
+  "name": "Wings",
+  "version": "1.0.0",
+  "homepage": "https://github.com/chamilpubudu/Wings",
+  "authors": [
+    "chamilpubudu <chamilpubudu@gmail.com>"
+  ],
+  "description": "ISV Product Platform",
+  "main": "index.html",
+  "moduleType": [
+    "node"
+  ],
+  "license": "MIT",
+  "ignore": [
+    "**/.*",
+    "node_modules",
+    "bower_components",
+    "test",
+    "tests"
+  ]
+}

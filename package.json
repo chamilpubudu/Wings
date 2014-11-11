@@ -4,7 +4,8 @@
   "description": "ISV Product Platform",
   "main": "index.html",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "postinstall": "bower install",
+    "test": "echo \"Error: no test specified\" && exit 0"
   },
   "repository": {
     "type": "git",
@@ -15,5 +16,8 @@
   "bugs": {
     "url": "https://github.com/chamilpubudu/Wings/issues"
   },
-  "homepage": "https://github.com/chamilpubudu/Wings"
+  "homepage": "https://github.com/chamilpubudu/Wings",
+  "devDependencies": {
+    "bower": "^1.3.12"
+  }
 }
