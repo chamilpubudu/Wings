@@ -12,6 +12,7 @@ module.exports = function (grunt) {
         
         connect: {
             options: {
+                hostname: 'localhost',
                 livereload: 35729
             },
             webserver: {
@@ -23,7 +24,17 @@ module.exports = function (grunt) {
             },
             devserver: {
                 options: {
-                    base: 'src/',
+                    open: true,
+                    middleware: function (connect) {
+                        return [
+                          connect.static('.tmp'),
+                          connect().use(
+                            '/bower_components',
+                            connect.static('./bower_components')
+                          ),
+                          connect.static('src')
+                        ];
+                    },
                     port: 8888
                 }
             }
@@ -50,7 +61,8 @@ module.exports = function (grunt) {
                 // you run `grunt wiredep`
                 src: [
                   'src/{,*/}*.html'
-                ]
+                ],
+                ignorePath: /\.\.\//
             }
         }
     });
