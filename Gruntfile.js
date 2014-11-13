@@ -47,8 +47,9 @@ module.exports = function (grunt) {
         },
 
         watch: {
-            files: ['src/{,*/}*.html',
-                    'src/{,*/}*.{png,jpg,jpeg,gif,webp,svg}'],
+            files: ['src/**/*.html',
+                    'src/**/*.js',
+                    'src/**/*.{png,jpg,jpeg,gif,webp,svg}'],
             options: {
                 livereload: true,
                 nospawn: true

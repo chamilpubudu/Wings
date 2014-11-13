@@ -15,7 +15,8 @@ var myApp = angular
     'ngResource',
     'ngRoute',
     'ngSanitize',
-    'ngTouch'
+    'ngTouch',
+    'plusOne'
   ])
   .config(function ($routeProvider) {
       $routeProvider
@@ -26,6 +27,10 @@ var myApp = angular
         .when('/about', {
             templateUrl: 'app/about/about.html',
             controller: 'AboutCtrl'
+        })
+        .when('/plusOneDemo', {
+            templateUrl: 'app/plusOneDemo/plusOneDemo.html',
+            controller: 'plusOneDemoCtrl'
         })
         .otherwise({
             redirectTo: '/'
