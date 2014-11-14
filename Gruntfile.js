@@ -1,5 +1,4 @@
 'use strict';
-
 module.exports = function (grunt) {
 
     // Time how long tasks take. Can help when optimizing build times
@@ -24,7 +23,6 @@ module.exports = function (grunt) {
             },
             devserver: {
                 options: {
-                    open: true,
                     middleware: function (connect) {
                         return [
                           connect.static('.tmp'),
@@ -40,6 +38,41 @@ module.exports = function (grunt) {
             }
         },
 
+     /**
+     * `jshint` defines the rules of our linter as well as which files we
+     * should check. This file, all javascript sources, and all our unit tests
+     * are linted based on the policies listed in `options`. But we can also
+     * specify exclusionary patterns by prefixing them with an exclamation
+     * point (!); this is useful when code comes from a third party but is
+     * nonetheless inside `src/`.
+     */
+        jshint: {
+            src: [
+              'src/**/*.js'
+            ],
+            test: [
+              'test/**/*.js'
+            ],
+            gruntfile: [
+              'Gruntfile.js'
+            ],
+            options: {
+                curly: true,
+                immed: true,
+                newcap: true,
+                noarg: true,
+                sub: true,
+                boss: true,
+                eqnull: true,
+                globalstrict: true,
+                undef:false,
+                predef: ['module','require','angular','gapi']
+
+            },
+            globals: {}
+        },
+
+
         open: {
             devserver: {
                 path: 'http://localhost:8888'
@@ -47,13 +80,50 @@ module.exports = function (grunt) {
         },
 
         watch: {
-            files: ['src/**/*.html',
-                    'src/**/*.js',
-                    'src/**/*.{png,jpg,jpeg,gif,webp,svg}'],
             options: {
                 livereload: true,
                 nospawn: true
+            },
+       /**
+       * When the Gruntfile changes, we just want to lint it. In fact, when
+       * your Gruntfile changes, it will automatically be reloaded!
+       */
+            gruntfile: {
+                files: 'Gruntfile.js',
+                tasks: ['jshint:gruntfile'],
+                options: {
+                    livereload: false
+                }
+            },
+          /**
+          * When our JavaScript source files change, we want to run lint them and
+          * run our unit tests.
+          */
+            jssrc: {
+                files: [
+                  'src/**/*.js'
+                ],
+                tasks: ['jshint:src']
+            },
+            /**
+       * When assets are changed, copy them. Note that this will *not* copy new
+       * files, so this is probably not very useful.
+       */
+            assets: {
+                files: [
+                  'src/assets/**/*'
+                ],
+                tasks: []
+            },
+
+            /**
+       * When index.html changes, we need to compile it.
+       */
+            html: {
+                files: ['src/**/*.html'],
+                tasks: ['index:build']
             }
+
         },
 
         wiredep: {
@@ -72,13 +142,14 @@ module.exports = function (grunt) {
     grunt.loadNpmTasks('grunt-open');
     grunt.loadNpmTasks('grunt-contrib-watch');
     grunt.loadNpmTasks('grunt-wiredep');
+    grunt.loadNpmTasks('grunt-contrib-jshint');
 
     //TODO
     //defaults
     grunt.registerTask('default', ['dev']);
 
     //development
-    grunt.registerTask('dev', ['wiredep','connect:devserver', 'open:devserver', 'watch']);
+    grunt.registerTask('dev', ['wiredep', 'connect:devserver', 'open:devserver', 'jshint', 'watch']);
 
     //server daemon
     grunt.registerTask('serve', ['connect:webserver']);

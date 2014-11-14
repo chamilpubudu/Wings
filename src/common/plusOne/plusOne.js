@@ -1,4 +1,6 @@
-angular.module( 'plusOne', [] )
+'use strict';
+
+angular.module('plusOne', [])
 
 .directive( 'plusOne', function() {
   return {
