@@ -35,7 +35,22 @@ module.exports = function (grunt) {
                     },
                     port: 8888
                 }
-            }
+            },
+            testserver: {
+                options: {
+                    middleware: function (connect) {
+                        return [
+                          connect.static('.tmp'),
+                          connect().use(
+                            '/bower_components',
+                            connect.static('./bower_components')
+                          ),
+                          connect.static('src')
+                        ];
+                    },
+                    port: 9999
+                }
+            },
         },
 
      /**
@@ -78,6 +93,14 @@ module.exports = function (grunt) {
                 autoWatch: false,
                 singleRun: true
             }
+        },
+
+        protractor: {
+            options: {
+                keepAlive: true,
+                configFile: "./test/protractor-e2e.conf.js"
+            },
+            singlerun: {},
         },
 
         open: {
@@ -151,6 +174,7 @@ module.exports = function (grunt) {
     grunt.loadNpmTasks('grunt-wiredep');
     grunt.loadNpmTasks('grunt-contrib-jshint');
     grunt.loadNpmTasks('grunt-karma');
+    grunt.loadNpmTasks('grunt-protractor-runner');
 
     //TODO
     //defaults
@@ -167,7 +191,7 @@ module.exports = function (grunt) {
     grunt.registerTask('test', ['jshint:test', 'test:unit']);
     //grunt.registerTask('test', ['jshint', 'test:unit', 'test:e2e']);
     grunt.registerTask('test:unit', ['karma:unit']);
-    //grunt.registerTask('test:e2e', ['connect:testserver', 'protractor:singlerun']);
+    grunt.registerTask('test:e2e', ['connect:testserver', 'protractor:singlerun']);
 
     //TODO 2 year of moo
     ////autotest and watch tests

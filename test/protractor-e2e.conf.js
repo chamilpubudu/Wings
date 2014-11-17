@@ -1,6 +1,3 @@
-var os = require( 'os' )
-  , isWin = /^win32/.test( os.platform() );
-
 // A reference configuration file.
 exports.config = {
   // ----- How to setup Selenium -----
@@ -15,17 +12,17 @@ exports.config = {
 
   // The location of the selenium standalone server .jar file.
   // http://docs.seleniumhq.org/download/
-  seleniumServerJar: './scripts/selenium-server-standalone-2.39.0.jar',
+  // seleniumServerJar: '../node_modules/protractor/selenium/selenium-*.jar',
   // The port to start the selenium server on, or null if the server should
   // find its own unused port.
-  seleniumPort: 4444,
+  ////seleniumPort: 4444,
   // https://npmjs.org/package/protractor
   // seleniumAddress: 'http://localhost:4444/wd/hub',
   // Chromedriver location is used to help the selenium standalone server
   // find chromedriver. This will be passed to the selenium jar as
   // the system property webdriver.chrome.driver. If null, selenium will
   // attempt to find chromedriver using PATH.
-  chromeDriver: isWin ? './scripts/Chromedriver.exe' : './scripts/Chromedriver',
+  chromeDriver: '../node_modules/protractor/selenium/chromedriver',
   // Additional command line options to pass to selenium. For example,
   // if you need to change the browser timeout, use
   // seleniumArgs: ['-browserTimeout=60'],
@@ -33,16 +30,14 @@ exports.config = {
 
   // If sauceUser and sauceKey are specified, seleniumServerJar will be ignored.
   // The tests will be run remotely using SauceLabs.
-  sauceUser: null,
-  sauceKey: null,
+  ////sauceUser: null,
+  ////sauceKey: null,
 
   // ----- What tests to run -----
   //
   // Spec patterns are relative to the location of this config.
   specs: [
-    './test*/e2e/**/*.js',
-    './**/test*/e2e/**/*.js',
-    './app/modules/**/test*/e2e/*.js'
+    './e2e/*.spec.js'
   ],
 
   // ----- Capabilities to be passed to the webdriver instance ----
@@ -73,7 +68,7 @@ exports.config = {
   // A base URL for your application under test. Calls to protractor.get()
   // with relative paths will be prepended with this.
   // If you change your dev server port this will need to match. - default 'http://127.0.0.1:9000'
-  baseUrl: 'http://127.0.0.1:9000',
+  baseUrl: 'http://127.0.0.1:9999',
 
   // Selector for the element housing the angular app - this defaults to
   // body, but is necessary if ng-app is on a descendant of <body>
@@ -84,7 +79,7 @@ exports.config = {
     // onComplete will be called just before the driver quits.
     onComplete: null,
     // If true, display spec names.
-    isVerbose: false,
+    isVerbose: true,
     // If true, print colors to the terminal.
     showColors: true,
     // If true, include stack traces in failures.

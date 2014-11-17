@@ -44,7 +44,7 @@ module.exports = function(config) {
     frameworks: ['jasmine'],
 
     // Additional reporters, such as growl, junit, teamcity or coverage
-    //reporters: ['progress'/*, 'saucelabs' */],
+    reporters: ['progress'/*, 'saucelabs' */],
 
     // Continuous Integration mode, if true, it capture browsers, run tests and exit
     // singleRun: false, // (set it grunt file)
