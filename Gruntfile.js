@@ -50,9 +50,9 @@ module.exports = function (grunt) {
             src: [
               'src/**/*.js'
             ],
-            test: [
-              'test/**/*.js'
-            ],
+            test: {
+                src: ['test/**/*.js', '!test/**/*.conf.js']
+            },
             gruntfile: [
               'Gruntfile.js'
             ],
@@ -66,12 +66,19 @@ module.exports = function (grunt) {
                 eqnull: true,
                 globalstrict: true,
                 undef:false,
-                predef: ['module','require','angular','gapi']
+                predef: ['module','require','angular','gapi','describe','expect','it']
 
             },
             globals: {}
         },
 
+        karma: {
+            unit: {
+                configFile: './test/karma-unit.conf.js',
+                autoWatch: false,
+                singleRun: true
+            }
+        },
 
         open: {
             devserver: {
@@ -143,6 +150,7 @@ module.exports = function (grunt) {
     grunt.loadNpmTasks('grunt-contrib-watch');
     grunt.loadNpmTasks('grunt-wiredep');
     grunt.loadNpmTasks('grunt-contrib-jshint');
+    grunt.loadNpmTasks('grunt-karma');
 
     //TODO
     //defaults
@@ -156,8 +164,9 @@ module.exports = function (grunt) {
 
     //TODO 1 year of moo
     ////single run tests
+    grunt.registerTask('test', ['jshint:test', 'test:unit']);
     //grunt.registerTask('test', ['jshint', 'test:unit', 'test:e2e']);
-    //grunt.registerTask('test:unit', ['karma:unit']);
+    grunt.registerTask('test:unit', ['karma:unit']);
     //grunt.registerTask('test:e2e', ['connect:testserver', 'protractor:singlerun']);
 
     //TODO 2 year of moo
