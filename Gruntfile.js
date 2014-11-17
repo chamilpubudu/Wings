@@ -188,9 +188,9 @@ module.exports = function (grunt) {
 
     //TODO 1 year of moo
     ////single run tests
-    grunt.registerTask('test', ['jshint:test', 'test:unit', 'test:e2e']);
+    grunt.registerTask('test', ['test:unit', 'test:e2e']);
     //grunt.registerTask('test', ['jshint', 'test:unit', 'test:e2e']);
-    grunt.registerTask('test:unit', ['karma:unit']);
+    grunt.registerTask('test:unit', ['jshint:test', 'karma:unit']);
     grunt.registerTask('test:e2e', ['connect:testserver', 'protractor:singlerun']);
 
     //TODO 2 year of moo

@@ -5,7 +5,7 @@
   "main": "index.html",
   "scripts": {
     "postinstall": "node node_modules/protractor/bin/webdriver-manager update && bower install",
-    "test": "grunt test"
+    "test": "grunt test:unit"
   },
   "repository": {
     "type": "git",
