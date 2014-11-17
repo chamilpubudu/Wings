@@ -27,8 +27,7 @@ module.exports = function(config) {
       Safari
     */
     browsers: [
-      'Chrome',
-      'PhantomJS',
+      'PhantomJS'
     ],
 
 
