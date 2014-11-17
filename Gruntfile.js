@@ -81,7 +81,7 @@ module.exports = function (grunt) {
                 eqnull: true,
                 globalstrict: true,
                 undef:false,
-                predef: ['module','require','angular','gapi','describe','expect','it']
+                predef: ['module','require','angular','gapi','describe','expect','it','browser']
 
             },
             globals: {}
@@ -188,7 +188,7 @@ module.exports = function (grunt) {
 
     //TODO 1 year of moo
     ////single run tests
-    grunt.registerTask('test', ['jshint:test', 'test:unit']);
+    grunt.registerTask('test', ['jshint:test', 'test:unit', 'test:e2e']);
     //grunt.registerTask('test', ['jshint', 'test:unit', 'test:e2e']);
     grunt.registerTask('test:unit', ['karma:unit']);
     grunt.registerTask('test:e2e', ['connect:testserver', 'protractor:singlerun']);
