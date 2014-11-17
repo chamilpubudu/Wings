@@ -10,7 +10,8 @@ module.exports = function(config) {
     // **/(foo|bar).js: In all subdirectories, all "foo.js" or "bar.js" files
 
     files: [
-      '**/*.unit.js'
+      '../test/**/*.unit.js',
+      '../src/**/*.unit.js'
     ],
 
     // list of files / patterns to exclude
