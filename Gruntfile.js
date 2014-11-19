@@ -9,6 +9,15 @@ module.exports = function (grunt) {
 
         pkg: grunt.file.readJSON('package.json'),
         
+        compass: {
+            dev: {                    
+                options: {
+                    sassDir: './src/styles',
+                    cssDir: './src/styles'
+                }
+            }
+        },
+
         connect: {
             options: {
                 hostname: 'localhost',
@@ -146,6 +155,12 @@ module.exports = function (grunt) {
                 tasks: []
             },
 
+            sass: {
+                files: [
+                  'src/style/**/*.sass'
+                ],
+                tasks: ['compass']
+            },
             /**
        * When index.html changes, we need to compile it.
        */
@@ -175,13 +190,14 @@ module.exports = function (grunt) {
     grunt.loadNpmTasks('grunt-contrib-jshint');
     grunt.loadNpmTasks('grunt-karma');
     grunt.loadNpmTasks('grunt-protractor-runner');
+    grunt.loadNpmTasks('grunt-contrib-compass');
 
     //TODO
     //defaults
     grunt.registerTask('default', ['dev']);
 
     //development
-    grunt.registerTask('dev', ['wiredep', 'connect:devserver', 'open:devserver', 'jshint', 'watch']);
+    grunt.registerTask('dev', ['jshint', 'compass', 'wiredep', 'connect:devserver', 'open:devserver', 'watch']);
 
     //server daemon
     grunt.registerTask('serve', ['connect:webserver']);
