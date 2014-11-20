@@ -157,7 +157,7 @@ module.exports = function (grunt) {
 
             sass: {
                 files: [
-                  'src/style/**/*.sass'
+                  'src/styles/**/*.sass'
                 ],
                 tasks: ['compass']
             },
@@ -166,7 +166,7 @@ module.exports = function (grunt) {
        */
             html: {
                 files: ['src/**/*.html'],
-                tasks: ['index:build']
+                tasks: []
             }
 
         },
