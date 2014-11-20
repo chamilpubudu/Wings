@@ -1,4 +1,4 @@
-'use strict';
+
 module.exports = function (grunt) {
 
     // Time how long tasks take. Can help when optimizing build times
@@ -88,8 +88,9 @@ module.exports = function (grunt) {
                 sub: true,
                 boss: true,
                 eqnull: true,
-                globalstrict: true,
-                undef:false,
+                undef: false,
+                latedef: false,
+                funcscope: true,
                 predef: ['module','require','angular','gapi','describe','expect','it','browser']
 
             },

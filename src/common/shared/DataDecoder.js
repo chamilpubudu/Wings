@@ -1,4 +1,4 @@
-﻿"use strict";
+﻿
 /**
  * User: nalinK
  */
@@ -76,7 +76,7 @@ function formatDateForDisplay( date, type )
         {
             formattedDateTime = formattedDate + ' ' + formattedTime;
         }
-        else if ( type == "dts" )
+        else if ( type === "dts" )
         {
             var seconds = date.substring(12, 14);
             formattedDateTime = formattedDate + ' ' + formattedTime + ':' + seconds;
