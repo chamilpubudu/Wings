@@ -1,7 +1,6 @@
-﻿
-/**
+﻿/**
  * User: nalinK
- */
+*/
 
 
 
@@ -55,14 +54,14 @@ function formatDateForDisplay( date, type )
     var formattedDateTime = Const.naVal;
     //        var formattedDate = date.substring(6, 8) + '-' + date.substring(4,6) + '-' + date.substring(0, 4);
     //        var formattedDate = date.substring(6, 8) + '/' + date.substring(4, 6) + '/' + date.substring(0, 4);
-    var dateString;
+
     if ( date )
     {
         var formattedDate = date.substring(6, 8) + '-' + date.substring(4, 6) + '-' + date.substring(0, 4);
         var formattedTime = date.substring(8, 10) + ':' + date.substring(10, 12);
         var shortDate = date.substring(6, 8) + '-' + date.substring(4, 6);
         var javaScriptDate = new Date();
-        var today = ($("#today").val() !== undefined ? $("#today").val() : (javaScriptDate.getFullYear().toString(10) + formatMonthOrDate((javaScriptDate.getMonth() + 1).toString(10)) + formatMonthOrDate(javaScriptDate.getDate().toString(10))));
+        var today = ($("#today").val() != undefined ? $("#today").val() : (javaScriptDate.getFullYear().toString(10) + formatMonthOrDate((javaScriptDate.getMonth() + 1).toString(10)) + formatMonthOrDate(javaScriptDate.getDate().toString(10))));
 
         if ( type === "d" )
         {
@@ -76,7 +75,7 @@ function formatDateForDisplay( date, type )
         {
             formattedDateTime = formattedDate + ' ' + formattedTime;
         }
-        else if ( type === "dts" )
+        else if ( type == "dts" )
         {
             var seconds = date.substring(12, 14);
             formattedDateTime = formattedDate + ' ' + formattedTime + ':' + seconds;
@@ -91,7 +90,7 @@ function formatDateForDisplay( date, type )
         }
         else if ( type == "noadt" )
         { // news or announcement date   ex: '01-Jan 05:30' or only time
-            dateString = date.substring(0, 4) + date.substring(4, 6) + date.substring(6, 8);
+            var dateString = date.substring(0, 4) + date.substring(4, 6) + date.substring(6, 8);
 
             if ( today == dateString )
             {
@@ -104,7 +103,7 @@ function formatDateForDisplay( date, type )
         }
         else if ( type == "imdbndt" )
         {// format imdb news date format '2014-08-13 03:18:00.003' to  '14-Aug 03:18'
-            dateString = date.substring(0, 4) + date.substring(5, 7) + date.substring(8, 10);
+            var dateString = date.substring(0, 4) + date.substring(5, 7) + date.substring(8, 10);
             formattedTime = date.substring(11, 16);
             shortDate = date.substring(8, 10) + '-' + date.substring(5, 7);
 
