@@ -55,7 +55,7 @@ function formatDateForDisplay( date, type )
     var formattedDateTime = Const.naVal;
     //        var formattedDate = date.substring(6, 8) + '-' + date.substring(4,6) + '-' + date.substring(0, 4);
     //        var formattedDate = date.substring(6, 8) + '/' + date.substring(4, 6) + '/' + date.substring(0, 4);
-
+    var dateString;
     if ( date )
     {
         var formattedDate = date.substring(6, 8) + '-' + date.substring(4, 6) + '-' + date.substring(0, 4);
@@ -91,7 +91,7 @@ function formatDateForDisplay( date, type )
         }
         else if ( type == "noadt" )
         { // news or announcement date   ex: '01-Jan 05:30' or only time
-            var dateString = date.substring(0, 4) + date.substring(4, 6) + date.substring(6, 8);
+            dateString = date.substring(0, 4) + date.substring(4, 6) + date.substring(6, 8);
 
             if ( today == dateString )
             {
@@ -104,7 +104,7 @@ function formatDateForDisplay( date, type )
         }
         else if ( type == "imdbndt" )
         {// format imdb news date format '2014-08-13 03:18:00.003' to  '14-Aug 03:18'
-            var dateString = date.substring(0, 4) + date.substring(5, 7) + date.substring(8, 10);
+            dateString = date.substring(0, 4) + date.substring(5, 7) + date.substring(8, 10);
             formattedTime = date.substring(11, 16);
             shortDate = date.substring(8, 10) + '-' + date.substring(5, 7);
 

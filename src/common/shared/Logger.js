@@ -13,7 +13,7 @@ var Logger = (function ()
         showAlert : function ( msg )
         {
 
-            if ( isAlertEnable == true )
+            if ( isAlertEnable === true )
             {
                 alert( msg );
             }
@@ -21,7 +21,7 @@ var Logger = (function ()
         logMessage : function ( msg )
         {
 
-            if ( isLogEnable == true )
+            if ( isLogEnable === true )
             {
                 console.log(msg , "color:green; background-color:yellow" , "font-style: italic" );
             }
@@ -29,7 +29,7 @@ var Logger = (function ()
         logConsole : function ( msg )
         {
 
-            if ( isLogEnable == true )
+            if ( isLogEnable === true )
             {
                 console.log('HTML5 ' + msg , "color:green; background-color:yellow", "font-style: italic");
             }
@@ -37,7 +37,7 @@ var Logger = (function ()
         logDebug: function ( msg )
         {
 
-            if ( isLogEnable == true )
+            if ( isLogEnable === true )
             {
                 console.debug(" DEBUG  : " + msg , "color:green; background-color:yellow", "font-style: italic");
             }
@@ -45,7 +45,7 @@ var Logger = (function ()
         logInfo: function ( msg )
         {
 
-            if ( isLogEnable == true )
+            if ( isLogEnable === true )
             {
                 console.info(" INFO  : " + msg , "color:green; background-color:yellow", "font-style: italic");
             }
@@ -53,7 +53,7 @@ var Logger = (function ()
         logWarn: function ( msg )
         {
 
-            if ( isLogEnable == true )
+            if ( isLogEnable === true )
             {
                 console.warn(" INFO  : " + msg, "color:green; background-color:yellow", "font-style: italic");
             }
@@ -61,7 +61,7 @@ var Logger = (function ()
         logError: function ( msg )
         {
 
-            if ( isLogEnable == true )
+            if ( isLogEnable === true )
             {
                 console.error(" INFO  : " + msg, "color:green; background-color:yellow", "font-style: italic");
             }
@@ -69,7 +69,7 @@ var Logger = (function ()
         logAssert: function ( msg )
         {
 
-            if ( isLogEnable == true )
+            if ( isLogEnable === true )
             {
                 console.assert(" INFO  : " + msg, "color:green; background-color:yellow", "font-style: italic");
             }
@@ -78,7 +78,7 @@ var Logger = (function ()
         logException: function (ex, file)
         {
 
-            if (isLogEnable == true)
+            if (isLogEnable === true)
             {
                 console.assert(" EXCEPTION in " + file + " \n" + ex, "color:green; background-color:yellow", "font-style: italic");
             }
@@ -86,7 +86,7 @@ var Logger = (function ()
         AlertException: function (ex, file)
         {
 
-            if (isLogEnable == true)
+            if (isLogEnable === true)
             {
                 alert("Exception in " + file + " \n" + ex);
             }
@@ -103,5 +103,5 @@ var Logger = (function ()
         {
             isAlertEnable = isEnable;
         }
-    }
+    };
 })();

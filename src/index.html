@@ -3,10 +3,21 @@
 <head>
     <!-- bower:css -->
     <link rel="stylesheet" href="bower_components/bootstrap/dist/css/bootstrap.css" />
+    <link rel="stylesheet" href="bower_components/toastr/toastr.css" />
     <!-- endbower -->
+    <link rel="stylesheet" href="styles/app.css" />
     <title>Wings</title>
 </head>
 <body ng-app="myWingsApp">
+    <!-- =========================
+     PRE LOADER
+    ============================== -->
+    <div class="preloader" style="">
+        <div class="status" style="">
+            &nbsp;
+        </div>
+    </div>
+
     <!-- Add your site or application content here -->
     <div class="container">
         <div class="header">
@@ -14,6 +25,7 @@
                 <li class="active"><a ng-href="#/">Home</a></li>
                 <li><a ng-href="#/about">About</a></li>
                 <li><a ng-href="#/plusOneDemo">plusOne Demo</a></li>
+                <li><a ng-href="#/toastrDemo">Notification Demo</a></li>
                 <li><a ng-href="#/validation">Validation</a></li>
                 <li><a ng-href="#/error">Error Handling</a></li>
                 <li><a ng-href="#/">Contact</a></li>
@@ -42,6 +54,8 @@
     <script src="bower_components/angular-touch/angular-touch.js"></script>
     <script src="bower_components/angular-route/angular-route.js"></script>
     <script src="bower_components/angular-scenario/angular-scenario.js"></script>
+    <script src="bower_components/jquery.html5loader/src/jquery.html5Loader.js"></script>
+    <script src="bower_components/toastr/toastr.js"></script>
     <!-- endbower -->
     <script src="https://apis.google.com/js/platform.js"></script>
     <script type="text/javascript" src="common/plusOne/plusOne.js"></script>
@@ -49,8 +63,7 @@
     <script src="app/home/home.js"></script>
     <script src="app/about/about.js"></script>
     <script src="app/plusOneDemo/plusOneDemo.js"></script>
-
-
+    <script src="app/toastrDemo/toastrDemo.js"></script>
 
 </body>
 </html>

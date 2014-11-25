@@ -1,5 +1,3 @@
-"use strict";
-
 describe('Unit: Sample test', function () {
     // Our tests will go here
     it('should pass the Sample test 1',

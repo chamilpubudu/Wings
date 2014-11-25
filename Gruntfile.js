@@ -88,9 +88,6 @@ module.exports = function (grunt) {
                 sub: true,
                 boss: true,
                 eqnull: true,
-                undef: false,
-                latedef: false,
-                funcscope: true,
                 predef: ['module','require','angular','gapi','describe','expect','it','browser']
 
             },
