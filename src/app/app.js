@@ -35,6 +35,10 @@ var myApp = angular
             templateUrl: 'app/toastrDemo/toastrDemo.html',
             controller: 'toastrDemoCtrl'
         })
+        .when('/validationDemo', {
+            templateUrl: 'app/validationDemo/validationDemo.html',
+            controller: 'validationDemoCtrl'
+        })
         .otherwise({
             redirectTo: '/'
         });
